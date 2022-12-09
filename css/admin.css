@@ -1,0 +1,80 @@
+header {
+    background-color: #BBBBBB;
+    height:100px;
+    padding: 20px 0;
+}
+
+.cargas{
+    background-color: #BBBBBB;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.graficar{
+    background-color: #BBBBBB;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 500px;
+    justify-content: space-evenly;
+
+}
+
+.file-select {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .file-select::before {
+    width: 150px;
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 150px;
+    height: 32px;
+    display: inline-block;
+  }
+  
+  #src-file1::before {
+    content: 'Cargar Usuarios';
+  }
+  #src-file2::before {
+    content: 'Cargar Artistas';
+  }
+  #src-file3::before {
+    content: 'Cargar Canciones';
+  }
+  #src-file4::before {
+    content: 'Cargar Musica  ';
+  }
+  #src-file5::before {
+    content: 'Cargar Podcast ';
+  }
+  #src-file6::before {
+    content: 'Graficar Usuarios';
+  }
+  #src-file7::before {
+    content: 'Graficar Artistas';
+  }
+  #src-file8::before {
+    content: 'Graficar Musica ';
+  }
+  #src-file9::before {
+    content: 'Graficar Podcast';
+  }
+  
