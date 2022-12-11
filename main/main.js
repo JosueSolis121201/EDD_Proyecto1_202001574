@@ -5,9 +5,8 @@ import Playlist from "./playlist.js"
 import {listaDeUsuarios,pilaAmigos,playlist} from "./globales.js"
 
 let a = new Registrar();
+a.registrarCargaMasiva()
 
-//a.registrarCargaMasiva()
-//listaDeUsuarios.imprimir();
 
 let pila = new Amigos();
 
@@ -34,6 +33,8 @@ let cola = new Cola();
 
 let musica = new Playlist()
 musica.agregarPlaylist()
+
+
 
 
 

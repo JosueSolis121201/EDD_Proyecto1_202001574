@@ -20,20 +20,26 @@ class ListaCircularDoble{
         //si es el primero
         if(this.head==null){
             temp.sig = temp;
+            temp.ant = temp; 
+
             this.head=temp;
             this.tail=temp;
+            return;
         }
         // si yas existe uno
-        temp.sig=this.head;
-        this.head =temp;
-        this.tail.sig = temp;
+        this.head.sig = temp;         
+
+        temp.sig=this.tail;
+        temp.ant=this.head;
+        
+        this.tail.ant = temp;
+        
+        this.head = temp;
     }
 
     imprimir(){
         let temp = this.head;
         if(this.head!=null){
-            console.log(temp)
-
         }
 
 

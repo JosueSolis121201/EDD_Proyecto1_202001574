@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Proyecto 1</title>
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/usuario.css">
+    </head>
+<body>
+    <header>
+    </header>
+    <main>
+        <form id="formRegistrar">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="input-padron" placeholder="Usuario 123" ></input>
+
+            <label for="nombre_completo">Nombre Completo</label>
+            <input type="email" id="nombre_completo" class="input-padron" placeholder="nombre y apellido" >
+
+            <label for="dpi">DPI</label>
+            <input type="tel" id="dpi" class="input-padron"  placeholder="XXXX XXXX" >
+
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" class="input-padron"  placeholder="(XXX) XXXX XXXX" >
+
+            <label for="password">Password</label>
+            <input type="tel" id="password" class="input-padron"  placeholder="XXXX XXXX" >
+            <button type="button" value="Enviar formulario" class="enviar" id="buttonFormulario" >Enviar</button>
+            <button type="button" value="Enviar formulario" class="enviar" id="login">Login</button>
+        </form>
+
+        <form id="formLogin">
+            <label for="username">Username</label>
+            <input type="text" id="usernamelogin" class="input-padron" placeholder="Usuario 123" ></input>
+
+            <label for="password">Password</label>
+            <input type="tel" id="passwordlogin" class="input-padron"  placeholder="XXXX XXXX">
+
+            <input type="checkbox" id="checkboxAdmin"> <label for="checkboxAdmin">admin</label>
+
+            <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioLogin" >Enviar</button>
+            <button type="button" value="Enviar formulario" class="enviar" id="registrar">Registrar</button>
+        </form>
+
+
+        <form id="navegacionUsuario">
+            <div class="encabezado">
+            <button type="button" value="musica" class="botonUsuario" id="musica">musica</button>
+            <button type="button" value="playlist" class="botonUsuario" id="playlist">playlist</button>
+            <button type="button" value="artista" class="botonUsuario" id="artista">artista</button>
+            <button type="button" value="amigos" class="botonUsuario" id="amigos">amigos</button>
+            <button type="button" value="bloqueados" class="botonUsuario" id="bloqueados">bloqueados</button>
+            </div>
+
+            <from id="amigosUsuario">
+                <div class="añadirAmigos" id="añadirUsuarios">
+                    <div class="generadoAñadir">
+                        <div>
+                            <label class="infoAmigos">Usuarios</label>
+                            <img src = "usuario.png" class="imagenUsuario">
+                        </div>
+                    </div>
+                    <label class="infoAmigos">Usuarios</label>
+                </div>
+
+                <div class="eliminarAmigo">
+                    <label class="infoAmigos">Amigos</label>
+
+                </div>
+            </from>
+        </form>
+
+
+
+    </main>
+
+
+
+<script type="module" src="./main.js"></script>
+<script type="module" src="./registrar.js"></script>
+<script type="module" src="./vistaUsuario.js"></script>
+
+    
+
+
+
+</body>
+</html>
