@@ -1,14 +1,14 @@
 class NodoCabeza{
-    constructor(_value){
-        this.value = _value;
+    constructor(data){
+        this.value = data;
         this.next = null;
         this.down = null;
     }
 }
 
 class NodoValor{
-    constructor(_value){
-        this.value = _value;
+    constructor(data){
+        this.value = data;
         this.next = null;
     }
 }
@@ -19,19 +19,19 @@ class Listadelistas{
         this.head = null
     }
     //metodos de insertar
-    InsertarCabeceras(_value){
-        var temporal = new NodoCabeza(_value);
+    InsertarCabeceras(data){
+        let temporal = new NodoCabeza(data);
         temporal.next = this.head
         this.head = temporal;
     }
 
-    InsertarValores(_cabeza, _value){
-        var temporalcabeza = this.head
+    InsertarValores(_cabeza, data){
+        let temporalcabeza = this.head
         //recorrer toda la lista de cabezas 
         while(temporalcabeza != null){
             if(temporalcabeza.value == _cabeza){
-                var nuevacancion = new NodoValor(_value)
-                var iniciocanciones = temporalcabeza.down
+                let nuevacancion = new NodoValor(data)
+                let iniciocanciones = temporalcabeza.down
                 temporalcabeza.down = nuevacancion
                 nuevacancion.next = iniciocanciones
                 break
@@ -45,7 +45,7 @@ class Listadelistas{
     }
 
     mostrarCabeceras(){
-        var temporal = this.head
+        let temporal = this.head
         console.log("*********** Cabeceras *********")
         while (temporal != null){
             console.log(temporal.value)
@@ -53,12 +53,12 @@ class Listadelistas{
         }
     }
 
-    MostrarValores(_value){
-        var temporal = this.head
+    MostrarValores(data){
+        let temporal = this.head
         while (temporal != null){
-            if(temporal.value == _value){
-                console.log("*********** Cabecera "+_value+" *********")        
-                var temporalcanciones = temporal.down
+            if(temporal.value == data){
+                console.log("*********** Cabecera "+data+" *********")        
+                let temporalcanciones = temporal.down
                 while(temporalcanciones != null){
                     console.log(temporalcanciones.value)
                     temporalcanciones = temporalcanciones.next
@@ -68,44 +68,62 @@ class Listadelistas{
             temporal = temporal.next
         }
         if(temporal == null){
-            console.log("No se pudo encontrar el cabeza solicitado "+_value)
+            console.log("No se pudo encontrar el cabeza solicitado "+data)
         }
+    }
+
+
+    graficar(){
+        //dot
+        let codigodot = "digraph G{\nlabel=\"Artitas: Canciones \";\nnode [shape=box style=filled];\ngraph [rankdir = LR];\nedge[dir = \"both\"];\n";
+        let temporal = this.head
+        let conexiones ="";
+        let nodos ="";
+        let numnodo= 0;
+
+        let nodoCancion="";
+        let numnodoCancion= 0;
+        
+        // cabeceras
+        while (temporal != null){
+                                //0,0
+                nodos+=  "N" + numnodo.toString()+ numnodoCancion.toString() + "[label=\"" + temporal.value + "\" ];\n"
+                
+                //futuro
+                let futurohijo = numnodo+1
+                if(temporal.next!=null){    
+                    conexiones += "N" +  numnodo.toString()+ numnodoCancion.toString() + " -> N" +  futurohijo.toString()+ numnodoCancion.toString() + ";\n"
+                    conexiones += "N" +  futurohijo.toString()+ numnodoCancion.toString() + " -> N" +numnodo.toString()+ numnodoCancion.toString() + ";\n"
+                }
+                let temporalcanciones = temporal.down
+                while(temporalcanciones != null){
+                    
+                    let futuroCancion = numnodoCancion+1
+                    nodos+=  "N" + numnodo.toString()+ futuroCancion.toString() + "[label=\"" + temporalcanciones.value + "\" ];\n"
+                    conexiones += "N" +  numnodo.toString()+ numnodoCancion.toString() + " -> N" +  numnodo.toString()+ futuroCancion.toString() + ";\n"
+                    conexiones += "N" +  numnodo.toString()+ futuroCancion.toString()  + " -> N" + numnodo.toString()+ numnodoCancion.toString() + ";\n"
+                    temporalcanciones = temporalcanciones.next
+                    numnodoCancion++;
+                }
+        numnodoCancion=0;
+        numnodo++;
+        temporal = temporal.next
+        }
+        //console.log("nodos: "+nodos)
+        //console.log("Conbexions: "+conexiones)
+        codigodot += "//agregando nodos\n"
+        codigodot += nodos+"\n"
+        codigodot += "//agregando conexiones o flechas\n"
+        codigodot += "{\n"+conexiones+"\n}\n}"
+        console.log(codigodot)
+        d3.select("#lienzoArtistas").graphviz()
+            .width(900)
+            .height(500)
+            .renderDot(codigodot)
     }
 }
 
-var listadelistas = new Listadelistas();
-listadelistas.InsertarCabeceras("Un verano sin ti");
-listadelistas.InsertarCabeceras("Demon days");
-listadelistas.InsertarCabeceras("The wall");
-listadelistas.InsertarCabeceras("The new abnormal");
-listadelistas.InsertarCabeceras("Cambios de luna");
-//listadelistas.mostrarCabeceras();
-console.log("\n\n\n\n")
-//cabeza
-listadelistas.InsertarValores("Un verano sin ti","Moscow Mule")
-listadelistas.InsertarValores("Un verano sin ti","Party")
-listadelistas.InsertarValores("Un verano sin ti","Titi me pregunto")
-listadelistas.InsertarValores("Un verano sin ti","Me porto bonito")
-//cabeza Demon days
-listadelistas.InsertarValores("Demon days","Dare")
-listadelistas.InsertarValores("Demon days","Dirty Harry")
-listadelistas.InsertarValores("Demon days","El mañana")
-//cabezas The Wall
-listadelistas.InsertarValores("The wall","Hey you")
-listadelistas.InsertarValores("The wall","Comfortably Numb")
-listadelistas.InsertarValores("The wall","Feel good inc")
-//cabeza The new abnormal
-listadelistas.InsertarValores("The new abnormal","Not the same anymore")
-listadelistas.InsertarValores("The new abnormal","elfless")
-listadelistas.InsertarValores("The new abnormal","Bad Decisions")
-//cabeza Cambios de Luna
-listadelistas.InsertarValores("Cambios de luna","Morir de amor")
-listadelistas.InsertarValores("Cambios de luna","Shillin")
-listadelistas.InsertarValores("Cambios de luna","La noche")
 
 
-listadelistas.MostrarValores("Demon days")
-listadelistas.MostrarValores("Un verano sin ti")
-listadelistas.MostrarValores("The wall")
-listadelistas.MostrarValores("The new abnormal")
-listadelistas.MostrarValores("Cambios de luna")
+
+export default Listadelistas;

@@ -43,6 +43,12 @@
         </form>
 
 
+
+
+
+
+
+
         <form id="navegacionUsuario">
             <div class="encabezado">
             <button type="button" value="musica" class="botonUsuario" id="musica">musica</button>
@@ -52,22 +58,49 @@
             <button type="button" value="bloqueados" class="botonUsuario" id="bloqueados">bloqueados</button>
             </div>
 
+
+
             <from id="amigosUsuario">
-                <div class="añadirAmigos" id="añadirUsuarios">
-                    <div class="generadoAñadir">
-                        <div>
-                            <label class="infoAmigos">Usuarios</label>
-                            <img src = "usuario.png" class="imagenUsuario">
-                        </div>
-                    </div>
                     <label class="infoAmigos">Usuarios</label>
+                    <button type="button" value="bloqueados" class="botonUsuario" id="eliminarAmigobttn2">Actualizar</button>
+                <div class="añadirAmigos" id="añadirUsuarios">
                 </div>
-
                 <div class="eliminarAmigo">
-                    <label class="infoAmigos">Amigos</label>
-
+                        <label class="infoAmigos">Amigos</label>
+                        <button type="button" value="bloqueados" class="botonUsuario" id="eliminarAmigobttn">Eliminar amigo</button>
+                        <div id="lienzoPila"></div>
                 </div>
             </from>
+
+            <from id="bloqueosUsuario"> 
+                <button type="button" value="bloqueados" class="botonUsuario" id="bloquearAmigobttn2">Actualizar</button>
+                <div class="añadirAmigos" id="bloqueosUsuarios">
+                    
+                </div>
+
+                <div class="eliminarAmigo" id="lienzoColaDiv">
+                    <button type="button" value="bloqueados" class="botonUsuario" id="bloquearAmigobttn">Desbloquear</button>
+                </div>
+
+            </from>
+
+
+            <from id="artistasUsuario"> 
+                <button type="button" value="bloqueados" class="botonUsuario" id="artistasUsuariobttn2">Actualizar</button>
+                <div class="eliminarAmigo">
+                    <div class="divArtistas" id="divArtistas"></div>
+                    <div class="cancionesArtista" id="cancionesArtista"></div>
+                </div>
+                
+
+                <div class="eliminarAmigo" id="lienzoArtistas">
+                    <button type="button" value="bloqueados" class="botonUsuario" id="actualizarArtitasGrafica">Actualizar Grafico</button>
+                </div>
+
+            </from>
+
+
+
         </form>
 
 
@@ -75,7 +108,9 @@
     </main>
 
 
-
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>   
+<script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
 <script type="module" src="./main.js"></script>
 <script type="module" src="./registrar.js"></script>
 <script type="module" src="./vistaUsuario.js"></script>

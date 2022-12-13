@@ -1,8 +1,8 @@
 let a =`[
     {
         "dpi":65465465456,
-        "name":"alan",
-        "username":"sadasdasd",
+        "name":"nombre1",
+        "username":"nombre1",
         "password":"a1d3as2d1sa",
         "phone":1468521,
         "admin":false
@@ -10,8 +10,8 @@ let a =`[
     },
     {
         "dpi":5645665465,
-        "name":"oscar",
-        "username":"EDD",
+        "name":"nombre3",
+        "username":"nombre3",
         "password":"123",
         "phone":12345678,
         "admin":false
@@ -19,8 +19,8 @@ let a =`[
     },
     {
         "dpi":635498712,
-        "name":"guta",
-        "username":"HRguti",
+        "name":"nombre2",
+        "username":"nombre2",
         "password":"dasdas45d",
         "phone":5626565,
         "admin":false

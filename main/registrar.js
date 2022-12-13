@@ -22,16 +22,16 @@ function registarBotonFormulario()
     //creando objeto js de datos
     let usuario={dpi:dpi, 
                 nombre:nombre_completo, 
-                nombre_usuario:username, 
+                username:username, 
                 contraseña:password,
-                telefono:telefono}
+                telefono:telefono,
+                admin:false}
 
 
     // comprobando que el form este lleno
     if(!(dpi == null || dpi == "") && !(nombre_completo == null || nombre_completo == "") && !(username == null || username == "")  && !(password == null || password == "") && !(telefono == null || telefono == "")){
         confirmacion = true
         listaDeUsuarios.agregar(username,usuario);
-         listaDeUsuarios.imprimir()
     }else{
         alert("Lista incompleta")
     }
@@ -39,7 +39,7 @@ function registarBotonFormulario()
     if(confirmacion){
         //! CAMBIAR A NONE
         registrar.style.display ="none";
-        login.style.display ="none";
+        login.style.display ="none"; 
       }
 }
 document.getElementById('buttonFormulario').addEventListener('click', registarBotonFormulario);
