@@ -70,15 +70,15 @@ class Cola{
 
     graficar(){
         //dot
-        var codigodot = "digraph G{\nlabel=\" Cola Amigos bloqueados \";\nnode [shape=box];\n graph [rankdir = left];";
-        var temporal = this.head
-        var conexiones ="";
-        var nodos ="";
-        var numnodo= 0;
+        let codigodot = "digraph G{\nlabel=\" Cola Amigos bloqueados \";\nnode [shape=box];\n graph [rankdir = left];";
+        let temporal = this.head
+        let conexiones ="";
+        let nodos ="";
+        let numnodo= 0;
         while (temporal != null) {
             nodos+=  "N" + numnodo + "[label=\"" + temporal.data + "\" ];\n"
             if(temporal.sig != null){
-                var auxnum = numnodo+1
+                let auxnum = numnodo+1
                 conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
             }
             temporal = temporal.sig

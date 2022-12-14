@@ -1,4 +1,4 @@
-import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas} from "./globales.js"
+import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matrisMusica,arbolPodcast} from "./globales.js"
 
 
 
@@ -255,7 +255,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
     }
 
 
-
+    //graficar "en vivo"
     document.getElementById('actualizarArtitasGrafica').addEventListener('click', graficarArtistas);
 
 
@@ -283,10 +283,210 @@ function buscarCanciones(temporal,artistanombre,contador1){
     buscarArtitas();
 
     
+    
+    
+    let ocultar2 = document.getElementById("artistasUsuario")
+    ocultar2.style.display ="none"
+
+    //TODO-------------------ARTISTAS-------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //traer ed playlist
+    // colocarlas en divs
+
+    function buscarMusica(){
+        document.getElementById("añadirUsuarios").innerHTML = '';
+        let actual = playlist.tail
+        let contador
+
+        do {
+            let usuario = actual.data;
+            
+            //generando divs
+            let nuevoDiv = document.createElement("div");
+            nuevoDiv.classList.add("generadoAñadir")
+            nuevoDiv.setAttribute("id","divParaUsuarioGenerado"+contador);
+            
+
+            document.getElementById("añadirPlaylist").appendChild(nuevoDiv);
+            
+
+            //generando label para nombres
+            let nombreUsuario = document.createElement("label");
+            nombreUsuario.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario);
+
+            //insertando nombres encontrados en label
+            let label = document.createTextNode(usuario);
+            nombreUsuario.appendChild(label);
+
+            //insertando imagen
+            let imagendiv = document.createElement("div");
+            imagendiv.classList.add("imagenUsuario")
+            nuevoDiv.appendChild(imagendiv);
+            contador++;
+            actual = actual.sig;
+          } while ( actual!= null&&actual!=playlist.head.sig);
+         
+    } 
+    function graficarPlaylist(){ 
+        playlist.graficar();
+    }
+
+
     //graficar "en vivo"
+    document.getElementById('actualizarPlaylistGrafica').addEventListener('click', graficarPlaylist);
+
+    playlist.agregar(1,"musica1")
+    playlist.agregar(2,"musica2")
+    playlist.agregar(3,"musica3")
+    playlist.agregar(4,"musica4")
+    playlist.agregar(5,"musica5")
+    buscarMusica();
+    //graficar en vivo
+
+    let ocultar3 = document.getElementById("formPlaylist")
+    ocultar3.style.display ="none"
+
+    //TODO-------------------PLAYLIST-------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+
+    //form
+    //si se desea publicar ahora, ira en lista de listas
+    // si se desea publicar con tiempo, ira en calendario(matriz dispersa)
+
+
+    function buscarMusicaMatrizDispersa(){
+        document.getElementById("añadirUsuarios").innerHTML = '';
+        let contador=0;
+        
+    } 
+
+     buscarMusicaMatrizDispersa();
+
+
+
+
+    function publicarCancion(){
+        //obteniendo los parametros se agraga a la lista de listas
+        let nombreArtista = document.getElementById("nombreCancionId").value;
+        let nombreAlbum = document.getElementById("NombreAlbumId").value;
+        if(!(nombreArtista == null || nombreArtista == "") && !(nombreAlbum == null || nombreAlbum == "")){
+            //confirmacion = true
+            listaDeArtitas.InsertarCabeceras(nombreArtista)
+            listaDeArtitas.InsertarValores(nombreArtista,nombreAlbum)
+            alert("Se publico, ver en los artistas")
+        }else{
+            alert("Llena los parametros")
+        }
+        
+
+    }
+    function programarCancion(){
+        let nombreArtista = document.getElementById("nombreCancionId").value;
+        let nombreAlbum = document.getElementById("NombreAlbumId").value;
+        let dia = document.getElementById("diaCancionid").value;
+        let mes = document.getElementById("mesCancionid").value;
+        
+        let artistaObjeto ={nombreArtista:nombreArtista,
+            nombreAlbum:nombreAlbum}
+            if(!(nombreArtista == null || nombreArtista == "") && !(nombreAlbum == null || nombreAlbum == "")&& !(dia == null || dia == "")&& !(mes == null || mes == "")){
+                //confirmacion = true
+                matrisMusica.insertar(mes,dia,artistaObjeto.nombreArtista) 
+                alert("Se publico, ver en grafica musica")
+            }else{
+                alert("Llena los parametros")
+            }
+        
+    }
+
+
+
+
+
+
+
+    document.getElementById('buttonFormularioCancion').addEventListener('click', publicarCancion);
+    document.getElementById('buttonFormularioProgramar').addEventListener('click', programarCancion);
+
+
+
+
+
+
+
+
+
+
+
+    matrisMusica.insertar("Enero",10,"Musica 1");
+    matrisMusica.insertar("Febrero",11,"Musica 2");
+    matrisMusica.insertar("marzo",12,"Musica 3");
+
+    function graficarMatrizMusica(){ 
+        matrisMusica.exportRender(); 
+    }
+
+    document.getElementById('actualizarMusicaGrafica').addEventListener('click', graficarMatrizMusica);
+
+
+
+    let ocultar4 = document.getElementById("formMusica")
+    ocultar4.style.display ="none"
+    //TODO-------------------Musica-------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+
+    function publicarPodCast(){
+        //obteniendo los parametros se agraga a la lista de listas
+        let nombrePodcast = document.getElementById("nombrePodcastId").value;
+        let tema = document.getElementById("tema").value;
+        let invitados = document.getElementById("invitados").value;
+        let duracion = document.getElementById("duracion").value;
+
+        
+        if(!(nombrePodcast == null || nombrePodcast == "") && !(tema == null || tema == "")&& !(invitados == null || invitados == "")&& !(duracion == null || duracion == "")){
+            //confirmacion = true
+            arbolPodcast.agregar("ASDASDSADADASDSAD")
+            arbolPodcast.graficar()
+            alert("Se publico, ver en los artistas")
+        }else{
+            alert("Llena los parametros")
+        }
+        
+
+    }
+
+
+    document.getElementById('buttonFormularioPodcast').addEventListener('click', publicarPodCast);
+   /* arbolPodcast.insertar();
+    arbolPodcast.insertar(32);
+    arbolPodcast.insertar(55);
+    arbolPodcast.insertar(20);
+    arbolPodcast.insertar(77);
+    arbolPodcast.insertar(8);
+    arbolPodcast.insertar(13);
+    arbolPodcast.insertar(1);
+    arbolPodcast.insertar(6);
+    arbolPodcast.insertar(25);
+    arbolPodcast.insertar(4);
+    console.log("Recorrido in orden");
+    arbolPodcast.inorden();
+    console.log("Recorrido post orden");
+    arbolPodcast.posorden();
+    
+    console.log("Recorrido pre orden");
+    arbolPodcast.preorden(); */
+    arbolPodcast.graficar();
     
 
 
-    //TODO-------------------ARTISTAS-------------------------------------------------------------------------------------------------------------------------------------
+
+
+    //TODO-------------------Podcast-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

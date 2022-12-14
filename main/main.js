@@ -1,7 +1,7 @@
 import Registrar from "./registrar.js";
 import Amigos from "./agregarAmigos.js";
 import Cola from "./cola.js";
-import Playlist from "./playlist.js"
+
 import {listaDeUsuarios,pilaAmigos,playlist} from "./globales.js"
 
 let a = new Registrar();
@@ -30,9 +30,6 @@ let cola = new Cola();
 
 
 //cola.imprimir()
-
-let musica = new Playlist()
-musica.agregarPlaylist()
 
 
 

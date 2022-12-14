@@ -46,7 +46,7 @@ class Listadelistas{
 
     mostrarCabeceras(){
         let temporal = this.head
-        console.log("*********** Cabeceras *********")
+        console.log("*********** Cabeceras *********") 
         while (temporal != null){
             console.log(temporal.value)
             temporal = temporal.next
@@ -54,7 +54,7 @@ class Listadelistas{
     }
 
     MostrarValores(data){
-        let temporal = this.head
+        let temporal = this.head 
         while (temporal != null){
             if(temporal.value == data){
                 console.log("*********** Cabecera "+data+" *********")        
@@ -115,7 +115,7 @@ class Listadelistas{
         codigodot += nodos+"\n"
         codigodot += "//agregando conexiones o flechas\n"
         codigodot += "{\n"+conexiones+"\n}\n}"
-        console.log(codigodot)
+        //console.log(codigodot)
         d3.select("#lienzoArtistas").graphviz()
             .width(900)
             .height(500)
