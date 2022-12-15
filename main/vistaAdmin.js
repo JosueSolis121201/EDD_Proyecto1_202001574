@@ -3,6 +3,8 @@ import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matris
 let vistaAdmin = document.getElementById("cargaMasivaAdmin") 
 let controladorRegister = document.getElementById("formRegistrar")
 
+
+
 let vistaLiezoUsuario = document.getElementById("lienzoAdminTest")
 let vistaLiezoArtistas= document.getElementById("lienzoArtistas")
 let vistaLiezoMusicaProgramada = document.getElementById("lienzomatriz")
@@ -134,9 +136,9 @@ function graficarPodcast(){
         vistaLiezoMusicaProgramada.style.display ="none"
         vistaLiezoPodcast.style.display ="block"
 }
-// no funcion graficar ya que depende de la anterior
-document.getElementById('podcastCargamasiva').addEventListener('change', cargaMasivaPodcast);
 document.getElementById('graficarPodcastAdmin').addEventListener('click', graficarPodcast);
+
+document.getElementById('podcastCargamasiva').addEventListener('change', cargaMasivaPodcast);
 //TODO Podcast-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     vistaAdmin.style.display ="none"
@@ -150,5 +152,14 @@ document.getElementById('graficarPodcastAdmin').addEventListener('click', grafic
 
 
     document.getElementById('cerrarSesionAdmin').addEventListener('click', visuarRegister);
+
+
+
+
+
+//!vistas prueba mejoras
+/*let controladorNavUsuario = document.getElementById("navegacionUsuario")
+controladorNavUsuario.style.display ="block"
+vistaAdmin.style.display ="block"*/
 
 

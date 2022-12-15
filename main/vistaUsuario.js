@@ -147,16 +147,7 @@ import Listadelistas from "./listaDeListas.js";
     document.getElementById('bloquearAmigobttn').addEventListener('click', desbloquear);
 
 
-    pilaAmigos.push("persona1")
-
-    pilaAmigos.push("persona2")
-    pilaAmigos.push("persona3")
-    pilaAmigos.push("persona4")
-    pilaAmigos.push("persona5")
-    pilaAmigos.push("persona6")
-    pilaAmigos.push("persona7")
-    pilaAmigos.push("persona8")
-    pilaAmigos.push("persona9")
+  
     
     let controladorBloquear = document.getElementById("bloqueosUsuario")
     controladorBloquear.style.display ="none"
@@ -180,7 +171,8 @@ import Listadelistas from "./listaDeListas.js";
             nuevoDiv.classList.add("generadoAñadir")
             nuevoDiv.setAttribute("id","divParaUsuarioGenerado"+contador1);
             nuevoDiv.addEventListener("click",(e)=>{
-                //colocarPila(usuario);
+               // console.log("estoy agregando"+)
+                //playlist.agregar(usuario,usuario);
             })
 
             document.getElementById("divArtistas").appendChild(nuevoDiv);
@@ -225,6 +217,10 @@ function buscarCanciones(temporal,artistanombre,contador1){
             let nuevoDiv = document.createElement("div");
             nuevoDiv.classList.add("generadoAñadir")
             nuevoDiv.setAttribute("id","divParaUsuarioGenerado");
+            nuevoDiv.addEventListener("click",(e)=>{
+                 console.log("estoy agregando"+usuario)
+                 playlist.agregar(usuario,usuario);
+             })
 
             document.getElementById("cajaCanciones"+contador1).appendChild(nuevoDiv);
             
@@ -340,12 +336,10 @@ function buscarCanciones(temporal,artistanombre,contador1){
     //graficar "en vivo"
     document.getElementById('actualizarPlaylistGrafica').addEventListener('click', graficarPlaylist);
 
-    playlist.agregar(1,"musica1")
-    playlist.agregar(2,"musica2")
-    playlist.agregar(3,"musica3")
-    playlist.agregar(4,"musica4")
-    playlist.agregar(5,"musica5")
-    buscarMusica();
+
+
+    document.getElementById('PlaylistUsuariobttn2').addEventListener('click', buscarMusica);
+    
     //graficar en vivo
 
     let controladorPlaylist = document.getElementById("formPlaylist")
@@ -424,9 +418,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
 
 
-    matrisMusica.insertar("Enero",10,"Musica 1");
-    matrisMusica.insertar("Febrero",11,"Musica 2");
-    matrisMusica.insertar("marzo",12,"Musica 3");
+  
 
     function graficarMatrizMusica(){ 
         matrisMusica.exportRender(); 
@@ -441,24 +433,23 @@ function buscarCanciones(temporal,artistanombre,contador1){
     //TODO-------------------Musica-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    /*function buscarUsuarioPodcast(){
-        document.getElementById("añadirUsuarios").innerHTML = '';
-        let contador=0;
-        let actual = listaDeUsuarios.head;
-        listaDeUsuarios.imprimir()
-        while( actual != null){
-            let usuario = actual.data.username;
+    
+    
+    
+    function recorrerarbol(actual){
+        let contador=0
+        
+        if(actual!=null){ 
+            let usuario = actual.llave;
             
             contador++
             //generando divs
             let nuevoDiv = document.createElement("div");
             nuevoDiv.classList.add("generadoAñadir")
             nuevoDiv.setAttribute("id","divParaUsuarioGenerado"+contador);
-            nuevoDiv.addEventListener("click",(e)=>{
-                colocarPila(usuario);
-            })
+           
 
-            document.getElementById("añadirUsuarios").appendChild(nuevoDiv);
+            document.getElementById("añadirPodcast").appendChild(nuevoDiv);
             
 
             //generando label para nombres
@@ -467,16 +458,30 @@ function buscarCanciones(temporal,artistanombre,contador1){
             nuevoDiv.appendChild(nombreUsuario);
 
             //insertando nombres encontrados en label
-            let label = document.createTextNode(actual.data.username);
+            let label = document.createTextNode(usuario);
             nombreUsuario.appendChild(label);
 
             //insertando imagen
             let imagendiv = document.createElement("div");
             imagendiv.classList.add("imagenUsuario")
             nuevoDiv.appendChild(imagendiv);
-            actual = actual.sig;
+
+            recorrerarbol(actual.izquierda);
+            recorrerarbol(actual.derecha);
         }
-    } */
+    
+
+    }
+    
+    function buscarUsuarioPodcast(){
+        document.getElementById("añadirPodcast").innerHTML = '';
+        console.log(arbolPodcast)
+        let contador=0;
+        let actual = arbolPodcast.raiz; 
+        recorrerarbol(actual);
+    } 
+
+    document.getElementById('PodcastButton').addEventListener('click', buscarUsuarioPodcast);
 
 
     function publicarPodCast(){
@@ -506,6 +511,12 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
 
     document.getElementById('buttonFormularioPodcast').addEventListener('click', publicarPodCast);
+
+
+    function graficarPodcast(){  
+        arbolPodcast.graficar()
+    }
+    document.getElementById('actualizarPodcastGrafica').addEventListener('click', graficarPodcast);
    /* arbolPodcast.insertar();
     arbolPodcast.insertar(32);
     arbolPodcast.insertar(55);
@@ -604,7 +615,6 @@ function buscarCanciones(temporal,artistanombre,contador1){
         controladorBloquear.style.display ="none"
         controladorArtistas.style.display ="none"
         controladorRegister.style.display ="none"
-        console.log("??")
     }
 
     function visualSesion(){

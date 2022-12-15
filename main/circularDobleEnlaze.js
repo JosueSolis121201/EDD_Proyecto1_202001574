@@ -2,11 +2,12 @@
 
 
 class Nodo {
-    constructor(llave,data){
+    constructor(llave,data,id){
         this.llave=llave;
         this.data= data;
         this.sig = null;
         this.ant= null;
+        this.id =id;
     }
 }
 
@@ -14,9 +15,12 @@ class ListaCircularDoble{
     constructor(){
         this.head=null;
         this.tail=null;
+        this.id=0;
     }
     agregar(llave,data){
-        let temp = new Nodo(llave,data);
+        
+        let temp = new Nodo(llave,data,this.id);
+        this.id++;
         //si es el primero
         if(this.head==null){
             temp.sig = temp;
@@ -26,6 +30,7 @@ class ListaCircularDoble{
             this.tail=temp;
             return;
         }
+
         // si yas existe uno
         this.head.sig = temp;         
 
@@ -35,7 +40,14 @@ class ListaCircularDoble{
         this.tail.ant = temp;
         
         this.head = temp;
-    }
+    } 
+
+
+
+
+
+
+
     graficar(){
         //dot
         let codigodot = "digraph G{\nlabel=\" PLAY LIST \";\nnode [shape=box];\n graph [rankdir = LR];";
@@ -43,17 +55,16 @@ class ListaCircularDoble{
         let conexiones ="";
         let nodos ="";
         let numnodo= 0;
+        let tailnodo=this.id
         do{
-            console.log(temporal.data)
-            nodos+=  "N" + numnodo + "[label=\"" + temporal.data + "\" ];\n"
-            let auxnum = numnodo+1
-            if(temporal==this.head.sig.sig.sig.sig){
-                auxnum=0;
-            }
-            conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
-            console.log(conexiones)
+            //console.log(temporal.data)
+            nodos+=  "N" + temporal.id + "[label=\"" + temporal.data + "\" ];\n"
+            conexiones += "N" + temporal.id + " -> N" + temporal.sig.id + ";\n"
+            //console.log(conexiones)
             temporal = temporal.sig
-            numnodo++;            
+            if(temporal.sig.id==0){
+                break;
+            }
 
         }while (temporal!=this.head) 
 
