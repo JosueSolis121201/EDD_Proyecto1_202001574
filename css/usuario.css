@@ -2,13 +2,19 @@
     height:5%;
     display: flex;
     justify-content: flex-end;
+    
 }
-
+body{
+    background: radial-gradient(white, #FFD88F);
+}
 .añadirAmigos, .eliminarAmigo{
     overflow: auto;
     margin-bottom: 10px;
     display: flex;
-    background-color: aquamarine;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: orange;
+    border-style: solid;
     height:60%;
     justify-content: flex-start;
 }
@@ -52,6 +58,12 @@
     border-style: solid;
 
     align-items: center;
+    transition: 0.3s all;
+}
+
+.generadoAñadir:hover,.bloqueosUsuarios:hover{
+    background: #FFD88F;
+
 }
 
 .imagenUsuario{
@@ -83,7 +95,6 @@
 #divArtistas,#cancionesArtista{
     overflow: auto;
     height: 100%;
-    background-color: beige;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -91,7 +102,6 @@
 
 #divButtons{
     height: 50%;
-    background-color: beige;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -103,7 +113,11 @@
     flex-direction: column;
     overflow: auto;
     height: 100%;
-    background-color: seagreen;
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: orange;
+    border-style: solid;
+    float: inline-end;
     width: 70%;
 }
 
@@ -113,7 +127,7 @@
     border-width: 5px;
     display: flex;
     flex-direction: row;
-    background-color: salmon;
+    
 }
 
 .inputAdmin::-webkit-file-upload-button {
@@ -139,7 +153,7 @@
 }
 
 .inputAdmin:hover::before {
-    background: darkorange;
+    background: black;
   }
   .inputAdmin:active::before {
     background: black;
@@ -167,8 +181,11 @@
     color: white;
 }
 
-#lienzoAdminTest{
-    background-color: blueviolet;
+#lienzoAdminTest,#lienzoArtistas,#lienzomatriz,#lienzoPodcast{
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: orange;
+    border-style: solid;
     float: inline-end;
 }
 

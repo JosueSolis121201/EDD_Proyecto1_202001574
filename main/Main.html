@@ -45,6 +45,7 @@
 
         <form id="cargaMasivaAdmin"  enctype="multipart/form-data">
             <div class="encabezado">
+                
                 <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="usuarioCargamasivaAdmin" >
                 <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="artistaCargamasiva" >
                 <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="cancionesCargaMasiva" >
@@ -52,6 +53,7 @@
                 <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="podcastCargamasiva">
                 <button type="button" value="bloqueados" class="botonUsuario" id="cerrarSesionAdmin">Cerrar sesion</button> 
             </div>
+            <label class="infoAmigos">Admin</label>
             <div class="contenedor">
             <div class="divArtistas" id="divButtons">
                 
@@ -80,20 +82,20 @@
                 <button type="button" value="bloqueados" class="botonUsuario" id="Podcast">Podcast</button> 
                 <button type="button" value="cerrarSesion" class="botonUsuario" id="cerrarSesion">Cerrar sesion</button>  
             </div>
-
+            
             <from id="amigosUsuario">
-                    <label class="infoAmigos">Usuarios</label>
+                    <label class="infoAmigos">Amigos</label>
                     <button type="button" value="bloqueados" class="botonUsuario" id="eliminarAmigobttn2">Actualizar</button>
                 <div class="añadirAmigos" id="añadirUsuarios">
                 </div>
                 <div class="eliminarAmigo">
-                        <label class="infoAmigos">Amigos</label>
                         <button type="button" value="bloqueados" class="botonUsuario" id="eliminarAmigobttn">Eliminar amigo</button>
                         <div id="lienzoPila"></div>
                 </div>
             </from>
 
             <from id="bloqueosUsuario"> 
+                <label class="infoAmigos">Bloqueados</label>
                 <button type="button" value="bloqueados" class="botonUsuario" id="bloquearAmigobttn2">Actualizar</button>
                 <div class="añadirAmigos" id="bloqueosUsuarios">
                     
@@ -105,6 +107,7 @@
 
             </from>
             <from id="artistasUsuario"> 
+                <label class="infoAmigos">Artistas</label>
                 <button type="button" value="bloqueados" class="botonUsuario" id="artistasUsuariobttn2">Actualizar</button>
                 <div class="eliminarAmigo">
                     <div class="divArtistas" id="divArtistas"></div>
@@ -150,8 +153,6 @@
 
 
                     <label class="infoAmigos">Musica</label>
-                    <button type="button" value="bloqueados" class="botonUsuario" id="MusicatUsuariobttn2">Actualizar</button>
-                <div class="añadirAmigos" id="añadirMusica">
                 </div>
                 <div class="eliminarAmigo">
                         <button type="button" value="bloqueados" class="botonUsuario" id="actualizarMusicaGrafica">Graficar</button>
@@ -177,6 +178,7 @@
                     <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioPodcast" >Publicar Podcast</button>
 
                 </form>
+                <label class="infoAmigos">Podcast</label>
                     <button type="button" value="bloqueados" class="botonUsuario" id="PodcastButton">Actualizar</button>
                 <div class="añadirAmigos" id="añadirPodcast">
                 </div>

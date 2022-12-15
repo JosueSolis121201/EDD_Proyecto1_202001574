@@ -137,15 +137,15 @@ document.getElementById('registrar').addEventListener('click', Controlar2);
 
 
 
-let usuarioAdminTest={dpi:666, 
-    name:"admin de admins", 
-    username:1, 
-    password:2,
-    phone:555555,
+let usuarioAdmin={dpi:2654568452521, 
+    name:"Oscar Armin", 
+    username:"EDD", 
+    password:123,
+    phone:"+502 (123) 123-4567",
     admin:true}
 
 
 
 
-    listaDeUsuarios.agregar(usuarioAdminTest.username,usuarioAdminTest);
+    listaDeUsuarios.agregar(usuarioAdmin.username,usuarioAdmin);
     listaDeUsuarios.imprimir()

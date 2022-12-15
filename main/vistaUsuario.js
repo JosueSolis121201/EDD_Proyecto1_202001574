@@ -441,7 +441,42 @@ function buscarCanciones(temporal,artistanombre,contador1){
     //TODO-------------------Musica-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
+    /*function buscarUsuarioPodcast(){
+        document.getElementById("añadirUsuarios").innerHTML = '';
+        let contador=0;
+        let actual = listaDeUsuarios.head;
+        listaDeUsuarios.imprimir()
+        while( actual != null){
+            let usuario = actual.data.username;
+            
+            contador++
+            //generando divs
+            let nuevoDiv = document.createElement("div");
+            nuevoDiv.classList.add("generadoAñadir")
+            nuevoDiv.setAttribute("id","divParaUsuarioGenerado"+contador);
+            nuevoDiv.addEventListener("click",(e)=>{
+                colocarPila(usuario);
+            })
+
+            document.getElementById("añadirUsuarios").appendChild(nuevoDiv);
+            
+
+            //generando label para nombres
+            let nombreUsuario = document.createElement("label");
+            nombreUsuario.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario);
+
+            //insertando nombres encontrados en label
+            let label = document.createTextNode(actual.data.username);
+            nombreUsuario.appendChild(label);
+
+            //insertando imagen
+            let imagendiv = document.createElement("div");
+            imagendiv.classList.add("imagenUsuario")
+            nuevoDiv.appendChild(imagendiv);
+            actual = actual.sig;
+        }
+    } */
 
 
     function publicarPodCast(){

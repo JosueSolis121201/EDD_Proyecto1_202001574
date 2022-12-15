@@ -140,6 +140,10 @@ class ABB{
             .width(2000)
             .height(2000)
             .renderDot(codigodot)
+            //limpiando
+            this.stringFinal="";
+            this.nodosCajas ="";
+            this.conexiones ="";
     }
 }
  
