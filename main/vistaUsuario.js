@@ -294,7 +294,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
     // colocarlas en divs
 
     function buscarMusica(){
-        document.getElementById("añadirUsuarios").innerHTML = '';
+        document.getElementById("añadirPlaylist").innerHTML = '';
         let actual = playlist.tail
         let contador
 
@@ -440,6 +440,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
         let contador=0
         
         if(actual!=null){ 
+            console.log(actual)
             let usuario = actual.llave;
             
             contador++

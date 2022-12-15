@@ -60,6 +60,7 @@ class ListaCircularDoble{
             //console.log(temporal.data)
             nodos+=  "N" + temporal.id + "[label=\"" + temporal.data + "\" ];\n"
             conexiones += "N" + temporal.id + " -> N" + temporal.sig.id + ";\n"
+            conexiones += "N" + temporal.sig.id + " -> N" + temporal.id + ";\n"
             //console.log(conexiones)
             temporal = temporal.sig
             if(temporal.sig.id==0){
