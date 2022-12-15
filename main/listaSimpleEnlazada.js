@@ -76,6 +76,34 @@ class ListaSimpleEnlazada{
     }
 }
 
+
+graficar(){
+    //dot
+    let codigodot = "digraph G{\nlabel=\" Lista Simple \";\nnode [shape=box];\n graph [rankdir = RL];";
+    let temporal = this.head
+    let conexiones ="";
+    let nodos ="";
+    let numnodo= 0;
+    while (temporal != null) {
+        nodos+=  "N" + numnodo + "[label=\"" + temporal.llave + "\" ];\n"
+        if(temporal.sig != null){
+            let auxnum = numnodo+1
+            conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
+        }
+        temporal = temporal.sig
+        numnodo++;            
+    }
+    codigodot += "//agregando nodos\n"
+    codigodot += nodos+"\n"
+    codigodot += "//agregando conexiones o flechas\n"
+    codigodot += "{\n"+conexiones+"\n}\n}"
+    //console.log(codigodot)
+    d3.select("#lienzoAdminTest").graphviz()
+        .width(1000)
+        .height(1000)
+        .renderDot(codigodot)
+}
+
 };
 
 

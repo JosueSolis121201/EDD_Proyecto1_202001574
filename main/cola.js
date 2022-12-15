@@ -64,7 +64,7 @@ class Cola{
         let actual = this.head;
         while(actual!=null){
             console.log(actual)
-            actual=actual.sig
+            actual=actual.sig 
         }
     } 
 

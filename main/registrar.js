@@ -1,14 +1,23 @@
-import ListaSimpleEnlazada from "./listaSimpleEnlazada.js";
-import ArchivoPrueba from "./prueba.js";
-import {listaDeUsuarios} from "./globales.js"
+import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matrisMusica,arbolPodcast} from "./globales.js"
 
 
 let registrar = document.getElementById("formRegistrar")
 let login = document.getElementById("formLogin")
+
+
+let vistaAdmin = document.getElementById("cargaMasivaAdmin")
+//let login = document.getElementById("formLogin")
+
+
 login.style.display ="none"
 
-function registarBotonFormulario()
-{
+let vistaUsuario = document.getElementById("navegacionUsuario")
+let vistaAmigosButton = document.getElementById("amigosUsuario")
+
+let checkboxAdmin = document.getElementById("checkboxAdmin")
+
+function registarBotonFormulario(){
+    listaDeUsuarios.imprimir()
     let confirmacion = false;
     
 
@@ -21,11 +30,15 @@ function registarBotonFormulario()
     let admin=false
     //creando objeto js de datos
     let usuario={dpi:dpi, 
-                nombre:nombre_completo, 
+                name:nombre_completo, 
                 username:username, 
-                contraseña:password,
-                telefono:telefono,
+                password:password,
+                phone:telefono,
                 admin:false}
+    
+
+
+               
 
 
     // comprobando que el form este lleno
@@ -40,14 +53,15 @@ function registarBotonFormulario()
         //! CAMBIAR A NONE
         registrar.style.display ="none";
         login.style.display ="none"; 
+        vistaUsuario.style.display ="block";
+        vistaAmigosButton .style.display ="block";
       }
 }
 document.getElementById('buttonFormulario').addEventListener('click', registarBotonFormulario);
  
 
 
-function loginBotonFormulario()
-{   
+function loginBotonFormulario(){   
     // obenet variables de los imputs
     let username = document.getElementById("usernamelogin").value;
     let password = document.getElementById("passwordlogin").value;
@@ -56,11 +70,31 @@ function loginBotonFormulario()
     //if si encontro
     if(buscando!=null){
         //comparar contrasela actual con la de la lsita 
-        if(buscando.contraseña ==password){
-            alert("Bienvenido: "+username)
-            //! CAMBIAR A NONE
-            registrar.style.display ="none";
-            login.style.display ="none";
+        if(buscando.password ==password){
+           
+           
+            if(checkboxAdmin.checked){
+                console.log("Comprobando si es admin")
+                if(buscando.admin==true){
+                    alert("Bienvenido admin: "+username)
+                    console.log("es admin")
+                    registrar.style.display ="none";
+                    login.style.display ="none"; 
+                    vistaAdmin.style.display ="block";
+
+                }else{
+                    alert("No eres admin")
+                }
+            }else{
+                alert("Bienvenido: "+username)
+                registrar.style.display ="none";
+                login.style.display ="none"; 
+                vistaUsuario.style.display ="block";
+                vistaAmigosButton .style.display ="block";
+                console.log("Entrando como usuario")
+
+            }
+            
         }else{
             alert("Nombre de usuario encontrado contraseña INCORRECTA")
         }
@@ -103,24 +137,15 @@ document.getElementById('registrar').addEventListener('click', Controlar2);
 
 
 
-class Registrar{
-    constructor(){
-        //lista
-    }
-
-    registrarCargaMasiva(){
-        //json prueba
-        var obj = JSON.parse(ArchivoPrueba);
-        for (let data of obj) {
-            //guardar masivamente valores en lista simple
-            listaDeUsuarios.agregar(data.dpi,data);
-          }
-    }
-}
-
-export default Registrar
+let usuarioAdminTest={dpi:666, 
+    name:"admin de admins", 
+    username:1, 
+    password:2,
+    phone:555555,
+    admin:true}
 
 
 
 
-
+    listaDeUsuarios.agregar(usuarioAdminTest.username,usuarioAdminTest);
+    listaDeUsuarios.imprimir()

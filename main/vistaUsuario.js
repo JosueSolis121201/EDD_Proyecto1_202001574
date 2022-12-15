@@ -1,4 +1,5 @@
 import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matrisMusica,arbolPodcast} from "./globales.js"
+import Listadelistas from "./listaDeListas.js";
 
 
 
@@ -72,8 +73,8 @@ import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matris
 
     document.getElementById('eliminarAmigobttn2').addEventListener('click', buscarUsuario);
     document.getElementById('eliminarAmigobttn').addEventListener('click', eliminar);
-    let ocultar = document.getElementById("amigosUsuario")
-    ocultar.style.display ="none"
+    let controladorAmigos = document.getElementById("amigosUsuario")
+    controladorAmigos.style.display ="none"
     
     //TODO-------------------AÑADIR AMIGOS-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -157,8 +158,8 @@ import {listaDeUsuarios,pilaAmigos,playlist,bloqueoUsuario,listaDeArtitas,matris
     pilaAmigos.push("persona8")
     pilaAmigos.push("persona9")
     
-    let ocultar1 = document.getElementById("bloqueosUsuario")
-    ocultar1.style.display ="none"
+    let controladorBloquear = document.getElementById("bloqueosUsuario")
+    controladorBloquear.style.display ="none"
     //TODO-------------------Bloquear amigos-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -251,15 +252,17 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
     //Amigos bloqueados
     function graficarArtistas(){ 
-        listaDeArtitas.graficar();
+        listaDeArtitas.graficar(); 
+        console.log(listaDeArtitas)
     }
 
 
     //graficar "en vivo"
     document.getElementById('actualizarArtitasGrafica').addEventListener('click', graficarArtistas);
+    document.getElementById('artistasUsuariobttn2').addEventListener('click', buscarArtitas);
 
 
-    listaDeArtitas.InsertarCabeceras("Cambios de luna");
+    /*listaDeArtitas.InsertarCabeceras("Cambios de luna");
 
     listaDeArtitas.InsertarValores("Cambios de luna","Morir de amor")
     listaDeArtitas.InsertarValores("Cambios de luna","Shillin")
@@ -280,13 +283,13 @@ function buscarCanciones(temporal,artistanombre,contador1){
     listaDeArtitas.InsertarValores("artista3","c3")
     listaDeArtitas.InsertarValores("artista3","d4")
     listaDeArtitas.InsertarValores("artista3","e5")
-    buscarArtitas();
+    buscarArtitas();*/
 
     
     
     
-    let ocultar2 = document.getElementById("artistasUsuario")
-    ocultar2.style.display ="none"
+    let controladorArtistas = document.getElementById("artistasUsuario")
+    controladorArtistas.style.display ="none"
 
     //TODO-------------------ARTISTAS-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -345,8 +348,8 @@ function buscarCanciones(temporal,artistanombre,contador1){
     buscarMusica();
     //graficar en vivo
 
-    let ocultar3 = document.getElementById("formPlaylist")
-    ocultar3.style.display ="none"
+    let controladorPlaylist = document.getElementById("formPlaylist")
+    controladorPlaylist.style.display ="none"
 
     //TODO-------------------PLAYLIST-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -433,8 +436,8 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
 
 
-    let ocultar4 = document.getElementById("formMusica")
-    ocultar4.style.display ="none"
+    let controladormusica = document.getElementById("formMusica")
+    controladormusica.style.display ="none"
     //TODO-------------------Musica-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -443,19 +446,24 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
     function publicarPodCast(){
         //obteniendo los parametros se agraga a la lista de listas
-        let nombrePodcast = document.getElementById("nombrePodcastId").value;
+        let nombrePodcast = document.getElementById("nombrePodcastId").value; 
         let tema = document.getElementById("tema").value;
         let invitados = document.getElementById("invitados").value;
         let duracion = document.getElementById("duracion").value;
 
-        
+        let Podcast ={nombrePodcast:nombrePodcast, 
+            tema:tema, 
+            invitados:invitados, 
+            duracion:duracion}
+
+            let string = "Podcast: "+nombrePodcast  +" Topic: " + tema
         if(!(nombrePodcast == null || nombrePodcast == "") && !(tema == null || tema == "")&& !(invitados == null || invitados == "")&& !(duracion == null || duracion == "")){
             //confirmacion = true
-            arbolPodcast.agregar("ASDASDSADADASDSAD")
+            arbolPodcast.agregarr(string,nombrePodcast)
             arbolPodcast.graficar()
-            alert("Se publico, ver en los artistas")
+            alert("Se publico, ver en boton graficar")
         }else{
-            alert("Llena los parametros")
+            alert("Llena los parametros") 
         }
         
 
@@ -481,12 +489,104 @@ function buscarCanciones(temporal,artistanombre,contador1){
     
     console.log("Recorrido pre orden");
     arbolPodcast.preorden(); */
-    arbolPodcast.graficar();
+    //arbolPodcast.graficar();
     
 
 
-
+    let controladorPodcast = document.getElementById("formPodcast")
+    controladorPodcast.style.display ="none"
 
     //TODO-------------------Podcast-------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //TODO-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    let ocultar6 = document.getElementById("navegacionUsuario")
+    ocultar6.style.display ="none"
+    //TODO-------------------OCULTAR USUARIO-------------------------------------------------------------------------------------------------------------------------------------
+    //! CONTROLADORES
+    let controladorRegister = document.getElementById("formRegistrar")
+    let controladorNavUsuario = document.getElementById("navegacionUsuario")
+
+    function visualMusica(){
+        controladormusica.style.display ="block"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="none"
+    }
+
+    function visualPlaylist(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="block"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="none"
+    }
+
+    function visualArtistas(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="block"
+        controladorRegister.style.display ="none"
+    }
+
+    function visualAmigos(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="block"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="none"
+    }
+
+    function visualBloqueos(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="block"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="none"
+    }
+
+    function visualPodcast(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="block"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="none"
+        console.log("??")
+    }
+
+    function visualSesion(){
+        controladormusica.style.display ="none"
+        controladorPodcast.style.display ="none"
+        controladorPlaylist.style.display ="none"
+        controladorAmigos.style.display ="none"
+        controladorBloquear.style.display ="none"
+        controladorArtistas.style.display ="none"
+        controladorRegister.style.display ="block" 
+        controladorNavUsuario.style.display ="none" 
+    }
+
+    document.getElementById('musica').addEventListener('click', visualMusica);
+    document.getElementById('playlist').addEventListener('click', visualPlaylist);
+    document.getElementById('artista').addEventListener('click', visualArtistas);
+    document.getElementById('amigos').addEventListener('click', visualAmigos);
+    document.getElementById('bloqueados').addEventListener('click', visualBloqueos);
+    document.getElementById('Podcast').addEventListener('click', visualPodcast);
+    document.getElementById('cerrarSesion').addEventListener('click', visualSesion);

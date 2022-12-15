@@ -33,6 +33,7 @@
             <label for="username">Username</label>
             <input type="text" id="usernamelogin" class="input-padron" placeholder="Usuario 123" ></input>
 
+
             <label for="password">Password</label>
             <input type="tel" id="passwordlogin" class="input-padron"  placeholder="XXXX XXXX">
 
@@ -42,24 +43,43 @@
             <button type="button" value="Enviar formulario" class="enviar" id="registrar">Registrar</button>
         </form>
 
-
-
-
-
-
-
-
-        <form id="navegacionUsuario">
+        <form id="cargaMasivaAdmin"  enctype="multipart/form-data">
             <div class="encabezado">
-            <button type="button" value="musica" class="botonUsuario" id="musica">musica</button>
-            <button type="button" value="playlist" class="botonUsuario" id="playlist">playlist</button>
-            <button type="button" value="artista" class="botonUsuario" id="artista">artista</button>
-            <button type="button" value="amigos" class="botonUsuario" id="amigos">amigos</button>
-            <button type="button" value="bloqueados" class="botonUsuario" id="bloqueados">bloqueados</button>
-            <button type="button" value="bloqueados" class="botonUsuario" id="bloqueados">Podcast</button>
+                <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="usuarioCargamasivaAdmin" >
+                <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="artistaCargamasiva" >
+                <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="cancionesCargaMasiva" >
+                <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="musicaProgramadaCargaMasiva">
+                <input type="file" accept="aplications/json" value="musica" class="inputAdmin" id="podcastCargamasiva">
+                <button type="button" value="bloqueados" class="botonUsuario" id="cerrarSesionAdmin">Cerrar sesion</button> 
+            </div>
+            <div class="contenedor">
+            <div class="divArtistas" id="divButtons">
+                
+
+
+                <button type="button" value="amigos" class="botonUsuario" id="graficarUsuariosAdmin">usuarios</button>
+                <button type="button" value="bloqueados" class="botonUsuario" id="graficarArtistasAdmin">artistas canciones</button>
+                <button type="button" value="bloqueados" class="botonUsuario" id="graficarMusicaAdmin">musica programada</button>
+                <button type="button" value="bloqueados" class="botonUsuario" id="graficarPodcastAdmin">podcast</button>
             </div>
 
+            <div id="lienzoAdminTest"></div>
+            <div id="lienzoArtistas"></div>
+            <div id="lienzomatriz"></div>
+            <div id = "lienzoPodcast"></div>
+        </div>
 
+        </form>
+        <form id="navegacionUsuario">
+            <div class="encabezado">
+                <button type="button" value="musica" class="botonUsuario" id="musica">musica</button>
+                <button type="button" value="playlist" class="botonUsuario" id="playlist">playlist</button>
+                <button type="button" value="artista" class="botonUsuario" id="artista">artista</button>
+                <button type="button" value="amigos" class="botonUsuario" id="amigos">amigos</button>
+                <button type="button" value="bloqueados" class="botonUsuario" id="bloqueados">bloqueados</button>
+                <button type="button" value="bloqueados" class="botonUsuario" id="Podcast">Podcast</button> 
+                <button type="button" value="cerrarSesion" class="botonUsuario" id="cerrarSesion">Cerrar sesion</button>  
+            </div>
 
             <from id="amigosUsuario">
                     <label class="infoAmigos">Usuarios</label>
@@ -84,99 +104,87 @@
                 </div>
 
             </from>
-
-
             <from id="artistasUsuario"> 
                 <button type="button" value="bloqueados" class="botonUsuario" id="artistasUsuariobttn2">Actualizar</button>
                 <div class="eliminarAmigo">
                     <div class="divArtistas" id="divArtistas"></div>
-                    <div class="cancionesArtista" id="cancionesArtista"></div>
+                    <div class="cancionesArtista" id="cancionesArtista"></div> 
                 </div>
                 
 
-                <div class="eliminarAmigo" id="lienzoArtistas">
+                <div class="eliminarAmigo" id="lienzoArtistas2"> 
                     <button type="button" value="bloqueados" class="botonUsuario" id="actualizarArtitasGrafica">Actualizar Grafico</button>
                 </div>
 
             </from>
 
+            <from id="formPlaylist">
+                    <label class="infoAmigos">Playlist</label>
+                    <button type="button" value="bloqueados" class="botonUsuario" id="PlaylistUsuariobttn2">Actualizar</button>
+                <div class="añadirAmigos" id="añadirPlaylist">
+                </div>
+                <div class="eliminarAmigo">
+                        <button type="button" value="bloqueados" class="botonUsuario" id="actualizarPlaylistGrafica">Graficar</button>
+                        <div id="lienzoPPlaylist"></div>
+                </div>
+            </from>
+
+            <from id="formMusica">
+
+                <form id="fromIngresarMusica">
+
+                    <label >Nombre</label>
+                    <input type="text" id="nombreCancionId" class="input-padron" placeholder="Nombre Artista" ></input>
+
+                    <label for="password">Album</label>
+                    <input type="text" id="NombreAlbumId" class="input-padron"  placeholder="Nombre Album">
+
+                    <label for="password">Fecha</label>
+                    <input type="text" id="diaCancionid" class="input-padron"  placeholder="Dia">
+                    <input type="text" id="mesCancionid" class="input-padron"  placeholder="Mes">
+
+                    <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioCancion" >Publicar</button>
+                    <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioProgramar">Programar</button>
+
+                </form>
 
 
+                    <label class="infoAmigos">Musica</label>
+                    <button type="button" value="bloqueados" class="botonUsuario" id="MusicatUsuariobttn2">Actualizar</button>
+                <div class="añadirAmigos" id="añadirMusica">
+                </div>
+                <div class="eliminarAmigo">
+                        <button type="button" value="bloqueados" class="botonUsuario" id="actualizarMusicaGrafica">Graficar</button>
+                        <div id="lienzomatriz2"></div>
+                </div>
+            </from>
 
+            <from id="formPodcast">
 
+                <form id="fromIngresarPodcast">
 
-        <from id="formPlaylist">
-                <label class="infoAmigos">Playlist</label>
-                <button type="button" value="bloqueados" class="botonUsuario" id="PlaylistUsuariobttn2">Actualizar</button>
-            <div class="añadirAmigos" id="añadirPlaylist">
-            </div>
-            <div class="eliminarAmigo">
-                    <button type="button" value="bloqueados" class="botonUsuario" id="actualizarPlaylistGrafica">Graficar</button>
-                    <div id="lienzoPPlaylist"></div>
-            </div>
-        </from>
+                    <label >Nombre</label>
+                    <input type="text" id="nombrePodcastId" class="input-padron" placeholder="Nombre Podcast" ></input>
 
-        <from id="formMusica">
+                    <label for="password">Tema</label>
+                    <input type="text" id="tema" class="input-padron"  placeholder="Tema Podcast">
 
-            <form id="fromIngresarMusica">
+                    <label for="password">Invitados</label>
+                    <input type="text" id="invitados" class="input-padron"  placeholder="XXXXX">
+                    <label for="password">Duracion</label>
+                    <input type="text" id="duracion" class="input-padron"  placeholder="Duracion (XX.XX)">
 
-                <label >Nombre</label>
-                <input type="text" id="nombreCancionId" class="input-padron" placeholder="Nombre Artista" ></input>
+                    <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioPodcast" >Publicar Podcast</button>
 
-                <label for="password">Album</label>
-                <input type="text" id="NombreAlbumId" class="input-padron"  placeholder="Nombre Album">
-
-                <label for="password">Fecha</label>
-                <input type="text" id="diaCancionid" class="input-padron"  placeholder="Dia">
-                <input type="text" id="mesCancionid" class="input-padron"  placeholder="Mes">
-
-                <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioCancion" >Publicar</button>
-                <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioProgramar">Programar</button>
-
-            </form>
-
-
-                <label class="infoAmigos">Musica</label>
-                <button type="button" value="bloqueados" class="botonUsuario" id="MusicatUsuariobttn2">Actualizar</button>
-            <div class="añadirAmigos" id="añadirMusica">
-            </div>
-            <div class="eliminarAmigo">
-                    <button type="button" value="bloqueados" class="botonUsuario" id="actualizarMusicaGrafica">Graficar</button>
-                    <button type="button" value="bloqueados" class="botonUsuario" id="publicarCancion">Publicar</button>
-                    <div id="lienzomatriz"></div>
-            </div>
-        </from>
-
-
-
-
-
-    <from id="formPodcast">
-
-        <form id="fromIngresarPodcast">
-
-            <label >Nombre</label>
-            <input type="text" id="nombrePodcastId" class="input-padron" placeholder="Nombre Podcast" ></input>
-
-            <label for="password">Tema</label>
-            <input type="text" id="tema" class="input-padron"  placeholder="Tema Podcast">
-
-            <label for="password">Invitados</label>
-            <input type="text" id="invitados" class="input-padron"  placeholder="FORMATO SIN DECIDIRA AAAAAAAAAAAAA">
-            <label for="password">Duracion</label>
-            <input type="text" id="duracion" class="input-padron"  placeholder="Duracion (XX.XX)">
-
-            <button type="button" value="Enviar formulario" class="enviar" id="buttonFormularioPodcast" >Publicar Podcast</button>
-
-        </form>
-            <button type="button" value="bloqueados" class="botonUsuario" id="PodcastButton">Actualizar</button>
-        <div class="añadirAmigos" id="añadirPodcast">
-        </div>
-        <div class="eliminarAmigo">
-                <button type="button" value="bloqueados" class="botonUsuario" id="actualizarPodcastGrafica">Graficar</button>
-                <div id="lienzoPodcast"></div>
-        </div>
-    </from>
+                </form>
+                    <button type="button" value="bloqueados" class="botonUsuario" id="PodcastButton">Actualizar</button>
+                <div class="añadirAmigos" id="añadirPodcast">
+                </div>
+                <div class="eliminarAmigo">
+                        <button type="button" value="bloqueados" class="botonUsuario" id="actualizarPodcastGrafica">Graficar</button>
+                        <div id="lienzoPodcast2"></div>
+                </div>
+            </from>
 
 
 
@@ -191,9 +199,9 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>   
 <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
-<script type="module" src="./main.js"></script>
 <script type="module" src="./registrar.js"></script>
 <script type="module" src="./vistaUsuario.js"></script>
+<script type="module" src="./vistaAdmin.js"></script>
 
     
 

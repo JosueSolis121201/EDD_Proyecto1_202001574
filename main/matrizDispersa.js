@@ -93,8 +93,13 @@ class Matriz {
     exportRender() {
         //console.log(this.configraph());
         d3.select("#lienzomatriz").graphviz()
-        .width(900)
-        .height(500)
+        .width(1000)
+        .height(1000)
+        .renderDot(this.configraph())
+
+        d3.select("#lienzomatriz2").graphviz()
+        .width(1000)
+        .height(1000)
         .renderDot(this.configraph())
     }
 
@@ -348,7 +353,6 @@ class Header {
 }
 
 
-const matrizDispersa = new Matriz();
 
 
 

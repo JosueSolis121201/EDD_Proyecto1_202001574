@@ -115,9 +115,15 @@ class Listadelistas{
         codigodot += nodos+"\n"
         codigodot += "//agregando conexiones o flechas\n"
         codigodot += "{\n"+conexiones+"\n}\n}"
-        //console.log(codigodot)
+        console.log(codigodot)
         d3.select("#lienzoArtistas").graphviz()
-            .width(900)
+            .width(1000)
+            .height(1000)
+            .renderDot(codigodot)
+            
+
+            d3.select("#lienzoArtistas2").graphviz()
+            .width(500)
             .height(500)
             .renderDot(codigodot)
     }
