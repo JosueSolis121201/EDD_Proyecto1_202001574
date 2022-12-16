@@ -25,11 +25,13 @@ class Listadelistas{
         this.head = temporal;
     }
 
-    InsertarValores(_cabeza, data){
+    InsertarValores(_cabeza, data){ 
         let temporalcabeza = this.head
         //recorrer toda la lista de cabezas 
         while(temporalcabeza != null){
-            if(temporalcabeza.value == _cabeza){
+            console.log(temporalcabeza.value.name)
+            console.log(_cabeza)
+            if(temporalcabeza.value.name == _cabeza){
                 let nuevacancion = new NodoValor(data)
                 let iniciocanciones = temporalcabeza.down
                 temporalcabeza.down = nuevacancion
@@ -87,7 +89,7 @@ class Listadelistas{
         // cabeceras
         while (temporal != null){
                                 //0,0
-                nodos+=  "N" + numnodo.toString()+ numnodoCancion.toString() + "[label=\"" + temporal.value + "\" ];\n"
+                nodos+=  "N" + numnodo.toString()+ numnodoCancion.toString() + "[label=\"" + temporal.value.name + "\" ];\n"
                 
                 //futuro
                 let futurohijo = numnodo+1
@@ -99,7 +101,7 @@ class Listadelistas{
                 while(temporalcanciones != null){
                     
                     let futuroCancion = numnodoCancion+1
-                    nodos+=  "N" + numnodo.toString()+ futuroCancion.toString() + "[label=\"" + temporalcanciones.value + "\" ];\n"
+                    nodos+=  "N" + numnodo.toString()+ futuroCancion.toString() + "[label=\"" + temporalcanciones.value.name + "\" ];\n"
                     conexiones += "N" +  numnodo.toString()+ numnodoCancion.toString() + " -> N" +  numnodo.toString()+ futuroCancion.toString() + ";\n"
                     conexiones += "N" +  numnodo.toString()+ futuroCancion.toString()  + " -> N" + numnodo.toString()+ numnodoCancion.toString() + ";\n"
                     temporalcanciones = temporalcanciones.next

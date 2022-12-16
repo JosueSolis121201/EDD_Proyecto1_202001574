@@ -84,6 +84,7 @@ graficar(){
     let conexiones ="";
     let nodos ="";
     let numnodo= 0;
+    console.log(temporal.llave)
     while (temporal != null) {
         nodos+=  "N" + numnodo + "[label=\"" + temporal.llave + "\" ];\n"
         if(temporal.sig != null){

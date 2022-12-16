@@ -11,7 +11,7 @@ import Listadelistas from "./listaDeListas.js";
         let actual = listaDeUsuarios.head;
         listaDeUsuarios.imprimir()
         while( actual != null){
-            let usuario = actual.data.username;
+            let usuario = actual.data;
             
             contador++
             //generando divs
@@ -24,16 +24,31 @@ import Listadelistas from "./listaDeListas.js";
 
             document.getElementById("añadirUsuarios").appendChild(nuevoDiv);
             
-
+            //! LABELS-------------------------------------------------
             //generando label para nombres
             let nombreUsuario = document.createElement("label");
             nombreUsuario.classList.add("infoAmigos")
             nuevoDiv.appendChild(nombreUsuario);
-
             //insertando nombres encontrados en label
-            let label = document.createTextNode(actual.data.username);
+            let label = document.createTextNode("Username: "+usuario.username);
             nombreUsuario.appendChild(label);
 
+            let nombreUsuario1 = document.createElement("label");
+            nombreUsuario1.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario1);
+            //insertando nombres encontrados en label
+            let label1 = document.createTextNode("Nombre: "+usuario.name);
+            nombreUsuario1.appendChild(label1);
+
+            let nombreUsuario2 = document.createElement("label");
+            nombreUsuario2.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario2);
+            //insertando nombres encontrados en label
+            let label2 = document.createTextNode("Telefono: "+usuario.phone);
+            nombreUsuario2.appendChild(label2);
+
+
+            //! LABELS-------------------------------------------------
             //insertando imagen
             let imagendiv = document.createElement("div");
             imagendiv.classList.add("imagenUsuario")
@@ -49,15 +64,15 @@ import Listadelistas from "./listaDeListas.js";
         let temp = pilaAmigos.top;
         //si es el primero
         if(temp ==null){
-            pilaAmigos.push(usuario);
+            pilaAmigos.push(usuario.username);
             pilaAmigos.graficar();
         }
         //recorriendo pila
         while(temp != null){
-            if(temp.data==usuario){
+            if(temp.data==usuario.username){
                 alert("Este usuario ya es tu amigo")
             }else{
-                pilaAmigos.push(usuario);
+                pilaAmigos.push(usuario.username);
                 pilaAmigos.graficar();
             }
             temp = temp.next;
@@ -92,6 +107,7 @@ import Listadelistas from "./listaDeListas.js";
             while( actual != null){
             
             let usuario = actual.data;
+            console.log(actual)
             //generando divs
             let nuevoDiv = document.createElement("div");
             nuevoDiv.classList.add("bloqueosUsuarios")
@@ -99,16 +115,18 @@ import Listadelistas from "./listaDeListas.js";
                 colocarCola(usuario);
             })
             document.getElementById("bloqueosUsuarios").appendChild(nuevoDiv);
+             //! LABELS-------------------------------------------------
+
+
 
             //generando label para nombres
             let nombreUsuario = document.createElement("label");
             nombreUsuario.classList.add("infoAmigos")
             nuevoDiv.appendChild(nombreUsuario);
-
             //insertando nombres encontrados en label
             let label = document.createTextNode(actual.data);
             nombreUsuario.appendChild(label);
-
+             //! LABELS-------------------------------------------------
             //insertando imagen
             let imagendiv = document.createElement("div");
             imagendiv.classList.add("imagenUsuario")
@@ -159,12 +177,14 @@ import Listadelistas from "./listaDeListas.js";
     
     function buscarArtitas(){
         document.getElementById("divArtistas").innerHTML = '';
+        document.getElementById("cancionesArtista").innerHTML = '';
+        
         let actual = listaDeArtitas.head;
         let contador1=0;
         while (actual != null){
             //BUSCAR CANCIONES DE ARTISTAS
             let usuario = actual.value;
-            buscarCanciones(actual,usuario,contador1);
+            buscarCanciones(actual,usuario.name,contador1);
             contador1++
             //generando divs
             let nuevoDiv = document.createElement("div");
@@ -178,14 +198,31 @@ import Listadelistas from "./listaDeListas.js";
             document.getElementById("divArtistas").appendChild(nuevoDiv);
             
 
+             //! LABELS-------------------------------------------------
             //generando label para nombres
             let nombreUsuario = document.createElement("label");
-            nombreUsuario.classList.add("infoAmigos")
+            nombreUsuario.classList.add("infoAmigos") 
             nuevoDiv.appendChild(nombreUsuario);
-
             //insertando nombres encontrados en label
-            let label = document.createTextNode(actual.value);
+            let label = document.createTextNode("Artista: "+usuario.name);
             nombreUsuario.appendChild(label);
+
+            //generando label para nombres
+            let nombreUsuario1 = document.createElement("label");
+            nombreUsuario1.classList.add("infoAmigos") 
+            nuevoDiv.appendChild(nombreUsuario1);
+            //insertando nombres encontrados en label
+            let label1 = document.createTextNode("Edad: "+usuario.age);
+            nombreUsuario1.appendChild(label1);
+
+            //generando label para nombres
+            let nombreUsuario2 = document.createElement("label");
+            nombreUsuario2.classList.add("infoAmigos") 
+            nuevoDiv.appendChild(nombreUsuario2);
+            //insertando nombres encontrados en label
+            let label2 = document.createTextNode("Pais: "+usuario.country);
+            nombreUsuario2.appendChild(label2);
+             //! LABELS-------------------------------------------------
 
             //insertando imagen
             let imagendiv = document.createElement("div");
@@ -211,7 +248,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
             let labelArtista = document.createTextNode(artistanombre); 
             artista.appendChild(labelArtista);
         while(temporalcanciones != null){
-            
+            console.log(temporalcanciones)
             let usuario = temporalcanciones.value;
             //generando divs
             let nuevoDiv = document.createElement("div");
@@ -219,21 +256,45 @@ function buscarCanciones(temporal,artistanombre,contador1){
             nuevoDiv.setAttribute("id","divParaUsuarioGenerado");
             nuevoDiv.addEventListener("click",(e)=>{
                  console.log("estoy agregando"+usuario)
-                 playlist.agregar(usuario,usuario);
+                 playlist.agregar(usuario.name,usuario);
              })
 
             document.getElementById("cajaCanciones"+contador1).appendChild(nuevoDiv);
             
-
+             //! LABELS-------------------------------------------------
             //generando label para nombres
+            console.log(usuario)
             let nombreUsuario = document.createElement("label");
             nombreUsuario.classList.add("infoAmigos") 
             nuevoDiv.appendChild(nombreUsuario);
-
             //insertando nombres encontrados en label
-            let label = document.createTextNode(usuario);
+            let label = document.createTextNode("Artista: "+usuario.artist);
             nombreUsuario.appendChild(label);
 
+            //generando label para nombres
+            let nombreUsuario1 = document.createElement("label");
+            nombreUsuario1.classList.add("infoAmigos") 
+            nuevoDiv.appendChild(nombreUsuario1);
+            //insertando nombres encontrados en label
+            let label1 = document.createTextNode("Nombre Cancion: "+usuario.name);
+            nombreUsuario1.appendChild(label1);
+
+            //generando label para nombres
+            let nombreUsuario2 = document.createElement("label");
+            nombreUsuario2.classList.add("infoAmigos") 
+            nuevoDiv.appendChild(nombreUsuario2);
+            //insertando nombres encontrados en label
+            let label2 = document.createTextNode("Duracion: "+usuario.duration);
+            nombreUsuario2.appendChild(label2);
+
+            //generando label para nombres
+            let nombreUsuario3 = document.createElement("label");
+            nombreUsuario3.classList.add("infoAmigos") 
+            nuevoDiv.appendChild(nombreUsuario3);
+            //insertando nombres encontrados en label
+            let label3 = document.createTextNode("Genero Musical: "+usuario.gender);
+            nombreUsuario3.appendChild(label3);
+             //! LABELS-------------------------------------------------
             //insertando imagen
             let imagendiv = document.createElement("div");
             imagendiv.classList.add("imagenUsuario")
@@ -257,33 +318,6 @@ function buscarCanciones(temporal,artistanombre,contador1){
     document.getElementById('actualizarArtitasGrafica').addEventListener('click', graficarArtistas);
     document.getElementById('artistasUsuariobttn2').addEventListener('click', buscarArtitas);
 
-
-    /*listaDeArtitas.InsertarCabeceras("Cambios de luna");
-
-    listaDeArtitas.InsertarValores("Cambios de luna","Morir de amor")
-    listaDeArtitas.InsertarValores("Cambios de luna","Shillin")
-    listaDeArtitas.InsertarValores("Cambios de luna","La noche")
-    listaDeArtitas.InsertarValores("Cambios de luna","1")
-    listaDeArtitas.InsertarValores("Cambios de luna","2")
-
-    listaDeArtitas.InsertarCabeceras("artista2");
-    listaDeArtitas.InsertarValores("artista2","a")
-    listaDeArtitas.InsertarValores("artista2","b")
-    listaDeArtitas.InsertarValores("artista2","c")
-    listaDeArtitas.InsertarValores("artista2","d")
-    listaDeArtitas.InsertarValores("artista2","e")
-
-    listaDeArtitas.InsertarCabeceras("artista3");
-    listaDeArtitas.InsertarValores("artista3","a1")
-    listaDeArtitas.InsertarValores("artista3","b2")
-    listaDeArtitas.InsertarValores("artista3","c3")
-    listaDeArtitas.InsertarValores("artista3","d4")
-    listaDeArtitas.InsertarValores("artista3","e5")
-    buscarArtitas();*/
-
-    
-    
-    
     let controladorArtistas = document.getElementById("artistasUsuario")
     controladorArtistas.style.display ="none"
 
@@ -295,9 +329,9 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
     function buscarMusica(){
         document.getElementById("añadirPlaylist").innerHTML = '';
+        console.log(playlist)
         let actual = playlist.tail
         let contador
-
         do {
             let usuario = actual.data;
             
@@ -316,7 +350,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
             nuevoDiv.appendChild(nombreUsuario);
 
             //insertando nombres encontrados en label
-            let label = document.createTextNode(usuario);
+            let label = document.createTextNode(usuario.name);
             nombreUsuario.appendChild(label);
 
             //insertando imagen
@@ -372,8 +406,17 @@ function buscarCanciones(temporal,artistanombre,contador1){
         let nombreAlbum = document.getElementById("NombreAlbumId").value;
         if(!(nombreArtista == null || nombreArtista == "") && !(nombreAlbum == null || nombreAlbum == "")){
             //confirmacion = true
-            listaDeArtitas.InsertarCabeceras(nombreArtista)
-            listaDeArtitas.InsertarValores(nombreArtista,nombreAlbum)
+            let artista ={name:nombreArtista,
+                age:"",
+                country:""}
+
+                let cancion ={artist:nombreArtista,
+                    name:nombreAlbum,
+                    duration:"00",
+                    gender:"---"}
+            
+            listaDeArtitas.InsertarCabeceras(artista)
+            listaDeArtitas.InsertarValores(nombreArtista,cancion)
             alert("Se publico, ver en los artistas")
         }else{
             alert("Llena los parametros")
@@ -438,10 +481,10 @@ function buscarCanciones(temporal,artistanombre,contador1){
     
     function recorrerarbol(actual){
         let contador=0
-        
         if(actual!=null){ 
             console.log(actual)
-            let usuario = actual.llave;
+            let usuario = actual.valor;
+            console.log(usuario)
             
             contador++
             //generando divs
@@ -452,15 +495,32 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
             document.getElementById("añadirPodcast").appendChild(nuevoDiv);
             
-
+            //! LABELS-------------------------------------------------
             //generando label para nombres
             let nombreUsuario = document.createElement("label");
             nombreUsuario.classList.add("infoAmigos")
             nuevoDiv.appendChild(nombreUsuario);
-
             //insertando nombres encontrados en label
-            let label = document.createTextNode(usuario);
+            let label = document.createTextNode("Usuario: "+usuario.name);
             nombreUsuario.appendChild(label);
+
+
+
+            let nombreUsuario1 = document.createElement("label");
+            nombreUsuario1.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario1);
+            //insertando nombres encontrados en label
+            let label1 = document.createTextNode("Topic: "+usuario.topic);
+            nombreUsuario1.appendChild(label1);
+
+
+            let nombreUsuario2 = document.createElement("label");
+            nombreUsuario2.classList.add("infoAmigos")
+            nuevoDiv.appendChild(nombreUsuario2);
+            //insertando nombres encontrados en label
+            let label2 = document.createTextNode("Duracion: "+usuario.duration);
+            nombreUsuario2.appendChild(label2);
+            //! LABELS-------------------------------------------------
 
             //insertando imagen
             let imagendiv = document.createElement("div");
@@ -492,15 +552,14 @@ function buscarCanciones(temporal,artistanombre,contador1){
         let invitados = document.getElementById("invitados").value;
         let duracion = document.getElementById("duracion").value;
 
-        let Podcast ={nombrePodcast:nombrePodcast, 
-            tema:tema, 
-            invitados:invitados, 
-            duracion:duracion}
+        let Podcast ={name:nombrePodcast, 
+            topic:tema, 
+            duration:duracion, 
+            guests:invitados}
 
-            let string = "Podcast: "+nombrePodcast  +" Topic: " + tema
         if(!(nombrePodcast == null || nombrePodcast == "") && !(tema == null || tema == "")&& !(invitados == null || invitados == "")&& !(duracion == null || duracion == "")){
             //confirmacion = true
-            arbolPodcast.agregarr(string,nombrePodcast)
+            arbolPodcast.agregarr(Podcast,nombrePodcast)
             arbolPodcast.graficar()
             alert("Se publico, ver en boton graficar")
         }else{
@@ -515,29 +574,9 @@ function buscarCanciones(temporal,artistanombre,contador1){
 
 
     function graficarPodcast(){  
-        arbolPodcast.graficar()
+        arbolPodcast.graficar() 
     }
     document.getElementById('actualizarPodcastGrafica').addEventListener('click', graficarPodcast);
-   /* arbolPodcast.insertar();
-    arbolPodcast.insertar(32);
-    arbolPodcast.insertar(55);
-    arbolPodcast.insertar(20);
-    arbolPodcast.insertar(77);
-    arbolPodcast.insertar(8);
-    arbolPodcast.insertar(13);
-    arbolPodcast.insertar(1);
-    arbolPodcast.insertar(6);
-    arbolPodcast.insertar(25);
-    arbolPodcast.insertar(4);
-    console.log("Recorrido in orden");
-    arbolPodcast.inorden();
-    console.log("Recorrido post orden");
-    arbolPodcast.posorden();
-    
-    console.log("Recorrido pre orden");
-    arbolPodcast.preorden(); */
-    //arbolPodcast.graficar();
-    
 
 
     let controladorPodcast = document.getElementById("formPodcast")

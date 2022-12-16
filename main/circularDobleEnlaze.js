@@ -58,7 +58,7 @@ class ListaCircularDoble{
         let tailnodo=this.id
         do{
             //console.log(temporal.data)
-            nodos+=  "N" + temporal.id + "[label=\"" + temporal.data + "\" ];\n"
+            nodos+=  "N" + temporal.id + "[label=\"" + temporal.data.name + "\" ];\n"
             conexiones += "N" + temporal.id + " -> N" + temporal.sig.id + ";\n"
             conexiones += "N" + temporal.sig.id + " -> N" + temporal.id + ";\n"
             //console.log(conexiones)

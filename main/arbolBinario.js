@@ -66,23 +66,23 @@ class ABB{
     pre_orden(nodo){
         if(nodo!=null){ 
             if(nodo.id==0){
-                this.nodosCajas+=  "N" + nodo.id + "[label=\"" + nodo.valor + "\" ];\n"
+                this.nodosCajas+=  "N" + nodo.id + "[label=\"" + nodo.valor.name + "\" ];\n"
             }
             //a = nodo.CAJAPROPIA//creo mi propia caja
             if(nodo.izquierda != null &&nodo.derecha != null){
                 //crear
-                this.nodosCajas+=  "N" + nodo.izquierda.id + "[label=\"" + nodo.izquierda.valor + "\" ];\n"
+                this.nodosCajas+=  "N" + nodo.izquierda.id + "[label=\"" + nodo.izquierda.valor.name + "\" ];\n"
                 this.conexiones += "N" + nodo.id + " -> N" + nodo.izquierda.id  + ";\n"
                 //conectar
-                this.nodosCajas+=  "N" + nodo.derecha.id + "[label=\"" + nodo.derecha.valor + "\" ];\n"
+                this.nodosCajas+=  "N" + nodo.derecha.id + "[label=\"" + nodo.derecha.valor.name + "\" ];\n"
                 this.conexiones += "N" + nodo.id  + " -> N" + nodo.derecha.id + ";\n"
             }else{
                 if(nodo.izquierda != null){
-                    this.nodosCajas+=  "N" + nodo.izquierda.id + "[label=\"" + nodo.izquierda.valor + "\" ];\n"
+                    this.nodosCajas+=  "N" + nodo.izquierda.id + "[label=\"" + nodo.izquierda.valor.name + "\" ];\n"
                     this.conexiones += "N" + nodo.id + " -> N" + nodo.izquierda.id  + ";\n"
                 }
                 if(nodo.derecha != null){
-                    this.nodosCajas+=  "N" + nodo.derecha.id + "[label=\"" + nodo.derecha.valor + "\" ];\n"
+                    this.nodosCajas+=  "N" + nodo.derecha.id + "[label=\"" + nodo.derecha.valor.name + "\" ];\n"
                     this.conexiones += "N" + nodo.id + " -> N" + nodo.derecha.id + ";\n"
                 }
         }

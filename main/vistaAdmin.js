@@ -52,7 +52,7 @@ function leercargaMasivaArtista(event){
         let artista ={name:data.name,
         age:data.age,
         country:data.country}
-        listaDeArtitas.InsertarCabeceras(data.name) 
+        listaDeArtitas.InsertarCabeceras(artista) 
       }
 }
 function graficarUsiarioArtista(){ 
@@ -79,7 +79,7 @@ function leercargaMasivaCanciones(event){
         gender:data.gender}
 
 
-        listaDeArtitas.InsertarValores(data.artist,data.name) 
+        listaDeArtitas.InsertarValores(data.artist,cancion) 
       }
 }
 // no funcion graficar ya que depende de la anterior
@@ -124,8 +124,11 @@ function cargaMasivaPodcast(event) {
 function podcast(event){
     let obj = JSON.parse(event.target.result);
     for (let data of obj) { 
-        let string = "Podcast: "+data.name  +" Topic: " + data.topic
-        arbolPodcast.agregarr(string,data.name);
+        let podcastindividual ={name:data.name,
+            topic:data.topic,
+            duration:data.duration,
+            guests:data.guests}
+        arbolPodcast.agregarr(podcastindividual,data.name);
       }
 }
 
@@ -163,3 +166,4 @@ controladorNavUsuario.style.display ="block"
 vistaAdmin.style.display ="block"*/
 
 
+    
