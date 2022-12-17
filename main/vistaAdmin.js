@@ -160,10 +160,7 @@ document.getElementById('podcastCargamasiva').addEventListener('change', cargaMa
 
 
 
-//!vistas prueba mejoras
-/*let controladorNavUsuario = document.getElementById("navegacionUsuario")
-controladorNavUsuario.style.display ="block"
-vistaAdmin.style.display ="block"*/
+
 
 
     
