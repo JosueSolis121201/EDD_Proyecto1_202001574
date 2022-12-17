@@ -3,6 +3,7 @@ class NodoCabeza{
         this.value = data;
         this.next = null;
         this.down = null;
+        this.back = null;
     }
 }
 
@@ -17,12 +18,20 @@ class NodoValor{
 class Listadelistas{
     constructor(){
         this.head = null
+        this.tail = null;
+        this.size=0;
     }
     //metodos de insertar
     InsertarCabeceras(data){
+        //crea nodo
         let temporal = new NodoCabeza(data);
-        temporal.next = this.head
+        this.size++;
+        //meter head en siguiente
+        temporal.next = this.head;
+        //mete head en nodo
         this.head = temporal;
+        
+
     }
 
     InsertarValores(_cabeza, data){ 
@@ -74,10 +83,115 @@ class Listadelistas{
         }
     }
 
+    bubbleSort(){
+        let change = true;
+        
+        while (change){
+            var temporal = this.head;
+            change= false;
+            while (temporal.next != null){
+                if(this.compararString(temporal.value.name,temporal.next.value.name)){
+                    let temp = temporal.value
+                    change= true;
+                    temporal.value = temporal.next.value
+                    temporal.next.value = temp
+            }
+            temporal = temporal.next
+        }
+    }
+}
+
+
+
+
+
+      compararString(izquierda,derecha){
+        if(izquierda.localeCompare(derecha) != 1){
+            return false
+        }
+        return true
+    }
+
+
+
+    getNodo(pos){
+		let temp = this.head;
+		for(let i = 0; i<pos;i++){
+			temp = temp.next;
+		}
+		return temp;
+	}
+
+  quicksort(){
+    this.ordenar(0,this.size-1)
+  }
+
+  ordenar(min,max) {
+    if (min < max) {
+  
+      let pos = this.partir(min, max);
+      console.log("pos", pos)
+      this.ordenar(min, pos - 1);
+      this.ordenar(pos + 1, max);
+    }}
+
+	change(pos1,pos2){
+		let valor = this.getNodo(pos1).value.name;
+		this.getNodo(pos1).value.name  = this.getNodo(pos2).value.name;
+		this.getNodo(pos2).value.name = valor;
+	}
+
+	partir(min,max){
+		let pivote = this.getNodo(max).value.name;
+    
+		let i = (min - 1);
+    
+		for(let j = min; j <= max - 1; j++){
+			if(this.getNodo(j).value.name > pivote){
+				i++;
+				this.change(i,j);
+			}
+		}
+		this.change(i + 1, max);
+		return (i + 1);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     graficar(){
         //dot
-        let codigodot = "digraph G{\nlabel=\"Artitas: Canciones \";\nnode [shape=box style=filled];\ngraph [rankdir = LR];\nedge[dir = \"both\"];\n";
+        let codigodot = "digraph G{\nlabel=\"Artitas: Canciones \";\nnode [shape=box style=filled];\ngraph [rankdir = LR];\n";
         let temporal = this.head
         let conexiones ="";
         let nodos ="";

@@ -318,6 +318,21 @@ function buscarCanciones(temporal,artistanombre,contador1){
     document.getElementById('actualizarArtitasGrafica').addEventListener('click', graficarArtistas);
     document.getElementById('artistasUsuariobttn2').addEventListener('click', buscarArtitas);
 
+
+    function ordenarAZ(){
+        buscarArtitas();
+        listaDeArtitas.bubbleSort();
+    }
+
+    function ordenarZA(){
+        buscarArtitas();
+        listaDeArtitas.quicksort();
+    }
+
+
+    document.getElementById('A-Z').addEventListener('click', ordenarAZ);
+    document.getElementById('Z-A').addEventListener('click', ordenarZA);
+
     let controladorArtistas = document.getElementById("artistasUsuario")
     controladorArtistas.style.display ="none"
 
@@ -413,7 +428,7 @@ function buscarCanciones(temporal,artistanombre,contador1){
                 let cancion ={artist:nombreArtista,
                     name:nombreAlbum,
                     duration:"00",
-                    gender:"---"}
+                    gender:"---"} 
             
             listaDeArtitas.InsertarCabeceras(artista)
             listaDeArtitas.InsertarValores(nombreArtista,cancion)

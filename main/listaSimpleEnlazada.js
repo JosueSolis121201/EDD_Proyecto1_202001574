@@ -32,7 +32,7 @@ class ListaSimpleEnlazada{
         }
 
         
-        let nuevo = new Nodo(llave,data,null)
+        let nuevo = new Nodo(llave,data,null) 
         nuevo.sig = this.head;
         this.head = nuevo;
    }
